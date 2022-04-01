@@ -1,0 +1,47 @@
+from news.models import *
+User.objects.create_user('Evgeny')
+User.objects.create_user('Tatyana')
+user1 = User.objects.get(id=1)
+user2 = User.objects.get(id=2)
+Author.objects.create(author_user=user1)
+Author.objects.create(author_user=user2)
+Category.objects.create(cat_name = 'IT')
+Category.objects.create(cat_name = 'Auto')
+Category.objects.create(cat_name = 'Travel')
+Category.objects.create(cat_name = 'Other')
+Post.objects.create(author = Author.objects.get(id=1), choice_type = 'NW', post_title = 'Title 1', post_text = 'Text for 1 post')
+Post.objects.create(author = Author.objects.get(id=2), choice_type = 'AR', post_title = 'Title 2', post_text = 'Text for 2 post')
+Post.objects.get(id=1).post_to_category_rel.add(Category.objects.get(id=1))
+Post.objects.get(id=1).post_to_category_rel.add(Category.objects.get(id=2))
+Post.objects.get(id=2).post_to_category_rel.add(Category.objects.get(id=2))
+Comment.objects.create(comment_to_post_rel = Post.objects.get(id=1), comment_to_user_rel = User.objects.get(id=2), comment_text = 'Comment text from user2')
+Comment.objects.create(comment_to_post_rel = Post.objects.get(id=1), comment_to_user_rel = User.objects.get(id=1), comment_text = "Comment text from user1")
+Comment.objects.create(comment_to_post_rel = Post.objects.get(id=1), comment_to_user_rel = User.objects.get(id=2), comment_text = 'Second text from user2')
+Comment.objects.create(comment_to_post_rel = Post.objects.get(id=2), comment_to_user_rel = User.objects.get(id=1), comment_text = 'Hello from user1')
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=2).like()
+Comment.objects.get(id=2).dislike()
+Comment.objects.get(id=2).dislike()
+Post.objects.get(id=2).like()
+Post.objects.get(id=2).like()
+Post.objects.get(id=1).dislike()
+Author.objects.get(id=1).update_rating()
+Author.objects.get(id=1).author_rating
+x = Author.objects.order_by('-author_rating')[:1]
+>>> for i in x:
+...     i.author_rating
+...     i.author_user.username
+p = Post.objects.order_by('-post_rating')[:1]
+>>> for i in p:
+...     i.create_date_time.strftime("%Y-%m-%d %H:%M")
+...     i.author.author_user.username
+...     i.post_rating
+...     i.post_title
+...     Post.objects.get(id=i.id).post_preview()
+
+c = Comment.objects.filter(comment_to_post_rel = p.get())
+>>> for i in c:
+...     i.create_date_time.strftime("%Y-%m-%d %H:%M")
+...     i.comment_to_user_rel.username
+...     i.comment_rating
+...     i.comment_text
