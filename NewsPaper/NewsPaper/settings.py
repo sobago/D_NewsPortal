@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-from NewsPaper.secret_keys import DJANGO_SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = DJANGO_SECRET_KEY
+SECRET_KEY = 'django-insecure-uwj9wu69t=vslb(v=&k3t15^2yu^rah!ua+3pklx7!n(4dm_9h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
