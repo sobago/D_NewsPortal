@@ -82,7 +82,7 @@ class PostCategory(models.Model):
 class Comment(models.Model):
     comment_to_post_rel = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name='Статья')
     comment_to_user_rel = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    comment_text = models.TextField(verbose_name='Текст комментария')
+    comment_text = models.TextField(verbose_name='Текст комментария ')
     create_date_time = models.DateTimeField(auto_now_add=True)
     comment_rating = models.IntegerField(default=0, verbose_name='Рейтинг комментария')
 
