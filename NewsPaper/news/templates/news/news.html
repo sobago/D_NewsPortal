@@ -1,5 +1,7 @@
 {% extends 'default.html' %}
 
+{% load custom_filters %}
+
 {% block title %}
     Новости
 {% endblock title %}
@@ -20,7 +22,7 @@
             </tr>
             <tr align="left">
                 <td><b>Текст статьи:</b></td>
-                <td>{{ post.post_text|truncatewords:20 }}</td>
+                <td>{{ post.post_text|censor|truncatewords:20 }}</td>
             </tr>
         </table>
         <hr>

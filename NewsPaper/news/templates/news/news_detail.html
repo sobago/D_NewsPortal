@@ -1,5 +1,7 @@
 {% extends 'default.html' %}
 
+{% load custom_filters %}
+
 {% block title %}
     Новость
 {% endblock title %}
@@ -14,9 +16,7 @@
             <td>Дата создания: {{ post_detail.create_date_time|date:'d E Y' }}</td>
         </tr>
         <tr align="left">
-            <td>{{ post_detail.post_text }}</td>
+            <td>{{ post_detail.post_text|censor }}</td>
         </tr>
     </table>
 {% endblock content %}
-
-# аголовок, дата публикации в формате день.месяц.год и полный текст статьи.
