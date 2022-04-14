@@ -8,10 +8,17 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Список новостей ({{ page_obj.paginator.count }})</h1>
+    <h1>Поиск новостей</h1>
     <hr>
-    {% if posts %}
-        {% for post in posts %}
+   <form action="" method="get">
+       {{ filterset.form.as_p }}
+       <input type="submit" value="Найти" />
+   </form>
+   <hr>
+    <p>Всего элементов: {{ search_post|length }}</p>
+   <hr>
+    {% if search_post %}
+        {% for post in search_post %}
         <table>
             <tr align="left">
                 <td><b>Заголовок:</b></td>
