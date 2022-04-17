@@ -7,16 +7,26 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Новость №{{ post_detail.pk }}</h1>
+<h1 xmlns="http://www.w3.org/1999/html">Новость №{{ post_detail.pk }}</h1>
+    <hr>
     <table>
         <tr align="left">
             <td><h5>{{ post_detail.post_title }}</h5></td>
         </tr>
         <tr align="left">
-            <td>Дата создания: {{ post_detail.create_date_time|date:'d E Y' }}</td>
+            <td>Дата создания: {{ post_detail.create_date_time|date:'d E Y' }}<br>
+                Категория: {{ post_detail.post_to_category_rel }}<br>
+                Рейтинг: {{ post_detail.post_rating }}<br>
+                Автор: {{ post_detail.author }}<br>
+                Тип: {{ post_detail.choice_type }}<br>
+            </td>
         </tr>
         <tr align="left">
             <td>{{ post_detail.post_text|censor }}</td>
         </tr>
     </table>
+    <hr>
+    <h6><a href="{{ post_detail.get_absolute_url }}/edit">Редактировать</a> |
+    <a href="{{ post_detail.get_absolute_url }}/delete">Удалить</a> </h6>
+
 {% endblock content %}

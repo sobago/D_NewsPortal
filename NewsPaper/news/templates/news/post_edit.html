@@ -1,0 +1,19 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+
+{% block title %}
+    Редактирование поста
+{% endblock title %}
+
+{% block content %}
+    <h1>Пост</h1>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Сохранить">
+    </form>
+
+{% endblock content %}
