@@ -1,3 +1,6 @@
-from django.test import TestCase
 
-# Create your tests here.
+
+a = 'news/post/create'
+
+print(a.split('/')[0])
+

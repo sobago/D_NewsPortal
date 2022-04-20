@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from .views import index, PostsList, PostDetail, PostSearch, PostCreateNews, PostCreateArticle, PostUpdate, PostDelete
+from .views import index, PostsList, PostDetail, PostSearch, PostCreateNews, PostCreateArticle, PostUpdate, PostDelete, \
+    ProfileUpdate, get_author
 
 urlpatterns = [
     path('index', index),
@@ -11,4 +12,6 @@ urlpatterns = [
     path('articles/create/', PostCreateArticle.as_view(), name='articles_create'),
     path('<int:pk>/edit', PostUpdate.as_view(), name='post_update'),
     path('<int:pk>/delete', PostDelete.as_view(), name='post_delete'),
+    path('user/<int:pk>/edit/', ProfileUpdate.as_view(), name='user_edit'),
+    path('upgrade/', get_author, name='upgrade'),
 ]
