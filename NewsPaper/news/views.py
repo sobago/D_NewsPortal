@@ -87,6 +87,12 @@ class PostDelete(PermissionRequiredMixin, DeleteView):
     permission_required = ('news.delete_post',)
 
 
+class ProfileDetail(DetailView):
+    model = User
+    template_name = 'profile_detail.html'
+    context_object_name = 'profile_detail'
+
+
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
     form_class = UserForm
     model = User

@@ -1,0 +1,27 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+    Профайл
+{% endblock title %}
+
+{% block content %}
+<h1>Профайл пользователя {{ profile_detail.username }} (#{{ profile_detail.pk }})</h1>
+    <hr>
+    <table>
+        <tr align="left">
+            <td><h5>{{ profile_detail.post_title }}</h5></td>
+        </tr>
+        <tr align="left">
+            <td>Имя: {{ profile_detail.first_name }}<br>
+                Фамилия: {{ profile_detail.last_name }}<br>
+                E-mail: {{ profile_detail.email }}<br>
+                Имя пользователя: {{ profile_detail.username }}<br>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <h6><a href="/user/{{ profile_detail.pk }}/edit">Изменить</a>
+
+{% endblock content %}
