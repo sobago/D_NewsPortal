@@ -4,7 +4,9 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
-from .models import Post
+from django.core.mail import EmailMultiAlternatives, send_mail
+from django.template.loader import render_to_string
+from .models import Post, Category
 from .filters import PostFilter
 from .forms import PostForm, UserForm
 
@@ -53,7 +55,28 @@ class PostCreateNews(PermissionRequiredMixin, CreateView):
     def form_valid(self, form):
         post = form.save(commit=False)
         post.choice_type = 'NW'
+        data = form.data
+        email(data)
         return super().form_valid(form)
+
+
+def email(data):
+    recipients_list = []
+    category = Category.objects.get(pk=data['post_to_category_rel'])
+    for i in category.subscribers.all():
+        recipients_list.append(i.email)
+    html_content = render_to_string(
+        'new_post_email.html', {
+            "data": data}
+    )
+    msg = EmailMultiAlternatives(
+        subject=f'Новый пост: {data["post_title"]}',
+        body=data["post_text"],
+        from_email='django_test12345@sobago.ru',
+        to=recipients_list,
+    )
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
 
 
 class PostCreateArticle(PermissionRequiredMixin, CreateView):
@@ -65,6 +88,8 @@ class PostCreateArticle(PermissionRequiredMixin, CreateView):
     def form_valid(self, form):
         post = form.save(commit=False)
         post.choice_type = 'AR'
+        data = form.data
+        email(data)
         return super().form_valid(form)
 
 
@@ -76,7 +101,7 @@ class PostUpdate(PermissionRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['is_not_premium'] = not self.request.user.groups.filter(name='premium').exists()
+        context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
         return context
 
 
@@ -112,3 +137,27 @@ def get_author(request):
     if not request.user.groups.filter(name='authors').exists():
         authors_group.user_set.add(user)
     return redirect('/')
+
+
+class CategoryList(ListView):
+    model = Category
+    ordering = 'cat_name'
+    template_name = 'categorys_subscribe.html'
+    context_object_name = 'categorys'
+    paginate_by = 10
+
+
+@login_required
+def get_subscribe(request, pk):
+    user = request.user
+    category = Category.objects.get(pk=pk)
+    category.subscribers.add(user)
+    return redirect('/categorys/')
+
+
+@login_required
+def del_subscribe(request, pk):
+    user = request.user
+    category = Category.objects.get(pk=pk)
+    category.subscribers.remove(user)
+    return redirect('/categorys/')

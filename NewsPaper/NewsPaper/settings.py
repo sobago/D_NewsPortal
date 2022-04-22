@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,6 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-uwj9wu69t=vslb(v=&k3t15^2yu^rah!ua+3pklx7!n(4dm_9h'
+
+EMAIL_HOST = 'smtp.beget.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'django_test12345@sobago.ru'
+EMAIL_HOST_PASSWORD = 'django_test12345'
+EMAIL_USE_SSL = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

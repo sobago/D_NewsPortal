@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from .views import index, PostsList, PostDetail, PostSearch, PostCreateNews, PostCreateArticle, PostUpdate, PostDelete, \
-    ProfileUpdate, ProfileDetail, get_author
+    ProfileUpdate, ProfileDetail, get_author, get_subscribe, del_subscribe, CategoryList
 
 urlpatterns = [
     path('index', index),
@@ -15,4 +15,7 @@ urlpatterns = [
     path('user/<int:pk>/edit/', ProfileUpdate.as_view(), name='user_edit'),
     path('user/<int:pk>/', ProfileDetail.as_view(), name='user_profile'),
     path('upgrade/', get_author, name='upgrade'),
+    path('subscribe/<int:pk>/', get_subscribe, name='subscribe'),
+    path('unsubscribe/<int:pk>/', del_subscribe, name='unsubscribe'),
+    path('categorys/', CategoryList.as_view(), name='category_list'),
 ]

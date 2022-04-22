@@ -15,7 +15,7 @@
         </tr>
         <tr align="left">
             <td>Дата создания: {{ post_detail.create_date_time|date:'d E Y' }}<br>
-                Категория: {{ post_detail.post_to_category_rel }}<br>
+                Категория: <a href="/categorys/">{{ post_detail.post_to_category_rel }}</a><br>
                 Рейтинг: {{ post_detail.post_rating }}<br>
                 Автор: {{ post_detail.author }}<br>
                 Тип: {{ post_detail.choice_type }}<br>

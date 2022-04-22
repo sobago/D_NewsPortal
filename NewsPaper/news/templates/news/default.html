@@ -41,7 +41,7 @@
                        </li>
                        {% if user.is_authenticated %}
                                               <li class="nav-item active">
-                           <a class="nav-link" href="/user/{{ user.pk }}">Профайл
+                           <a class="nav-link" href="/user/{{ user.pk }}">Профайл { {{ request.user }} }
                            </a>
                        </li>
                        <li class="nav-item active">
