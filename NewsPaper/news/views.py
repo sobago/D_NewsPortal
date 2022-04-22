@@ -92,6 +92,11 @@ class ProfileDetail(DetailView):
     template_name = 'profile_detail.html'
     context_object_name = 'profile_detail'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
+        return context
+
 
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
     form_class = UserForm

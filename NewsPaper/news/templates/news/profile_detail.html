@@ -20,6 +20,11 @@
                 Имя пользователя: {{ profile_detail.username }}<br>
             </td>
         </tr>
+        {% if is_not_author %}
+        <tr>
+        <td><button> <a href="/upgrade/">Хочу стать автором!</a></button></td>
+        </tr>
+        {% endif %}
     </table>
     <hr>
     <h6><a href="/user/{{ profile_detail.pk }}/edit">Изменить</a>
