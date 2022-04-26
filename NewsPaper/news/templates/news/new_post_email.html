@@ -6,7 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Новая статья: {{ data.post_title }}</h2>
+    <h2>Здравствуй, {{ recipient }}. Новая статья в твоём любимом разделе!</h2>
+    <h2>{{ data.post_title }}</h2>
     <hr>
     <p> {{ data.post_text|truncatechars:50 }} </p>
     <hr>

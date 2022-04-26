@@ -6,9 +6,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMultiAlternatives, send_mail
 from django.template.loader import render_to_string
-from .models import Post, Category
+from .models import Post, Category, Author
 from .filters import PostFilter
 from .forms import PostForm, UserForm
+from datetime import date
 
 
 # Create your views here.
@@ -52,31 +53,45 @@ class PostCreateNews(PermissionRequiredMixin, CreateView):
     template_name = 'post_edit.html'
     permission_required = ('news.add_post',)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['today_news_count'] = len(Post.objects.filter(
+            author=self.request.user.author,
+            create_date_time__date=date.today())
+        ) >= 3
+        return context
+
     def form_valid(self, form):
         post = form.save(commit=False)
         post.choice_type = 'NW'
+        post.author = self.request.user.author
         data = form.data
         email(data)
         return super().form_valid(form)
 
 
 def email(data):
-    recipients_list = []
+    recipients = []
     category = Category.objects.get(pk=data['post_to_category_rel'])
     for i in category.subscribers.all():
-        recipients_list.append(i.email)
-    html_content = render_to_string(
-        'new_post_email.html', {
-            "data": data}
-    )
-    msg = EmailMultiAlternatives(
-        subject=f'Новый пост: {data["post_title"]}',
-        body=data["post_text"],
-        from_email='django_test12345@sobago.ru',
-        to=recipients_list,
-    )
-    msg.attach_alternative(html_content, "text/html")
-    msg.send()
+        if i.email == "":
+            continue
+        else:
+            recipients.append([i.email, i.username])
+    for i, j in recipients:
+        html_content = render_to_string(
+            'new_post_email.html', {
+                "data": data, "recipient": j, }
+        )
+        email_i = [i]
+        msg = EmailMultiAlternatives(
+            subject=f'Новый пост: {data["post_title"]}',
+            body=data["post_text"],
+            from_email='django_test12345@sobago.ru',
+            to=email_i,
+        )
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
 
 
 class PostCreateArticle(PermissionRequiredMixin, CreateView):
@@ -88,6 +103,7 @@ class PostCreateArticle(PermissionRequiredMixin, CreateView):
     def form_valid(self, form):
         post = form.save(commit=False)
         post.choice_type = 'AR'
+        post.author = self.request.user.author
         data = form.data
         email(data)
         return super().form_valid(form)
@@ -136,6 +152,7 @@ def get_author(request):
     authors_group = Group.objects.get(name='authors')
     if not request.user.groups.filter(name='authors').exists():
         authors_group.user_set.add(user)
+        Author.objects.create(author_user=user)
     return redirect('/')
 
 
