@@ -4,8 +4,6 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.core.mail import EmailMultiAlternatives, send_mail
-from django.template.loader import render_to_string
 from .models import Post, Category, Author
 from .filters import PostFilter
 from .forms import PostForm, UserForm
@@ -55,43 +53,21 @@ class PostCreateNews(PermissionRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['today_news_count'] = len(Post.objects.filter(
-            author=self.request.user.author,
-            create_date_time__date=date.today())
-        ) >= 3
+        try:
+            context['today_news_count'] = len(Post.objects.filter(
+                author=self.request.user.author,
+                create_date_time__date=date.today())
+            ) >= 3
+        except:
+            pass
+
         return context
 
     def form_valid(self, form):
         post = form.save(commit=False)
         post.choice_type = 'NW'
         post.author = self.request.user.author
-        data = form.data
-        email(data)
         return super().form_valid(form)
-
-
-def email(data):
-    recipients = []
-    category = Category.objects.get(pk=data['post_to_category_rel'])
-    for i in category.subscribers.all():
-        if i.email == "":
-            continue
-        else:
-            recipients.append([i.email, i.username])
-    for i, j in recipients:
-        html_content = render_to_string(
-            'new_post_email.html', {
-                "data": data, "recipient": j, }
-        )
-        email_i = [i]
-        msg = EmailMultiAlternatives(
-            subject=f'Новый пост: {data["post_title"]}',
-            body=data["post_text"],
-            from_email='django_test12345@sobago.ru',
-            to=email_i,
-        )
-        msg.attach_alternative(html_content, "text/html")
-        msg.send()
 
 
 class PostCreateArticle(PermissionRequiredMixin, CreateView):
@@ -104,8 +80,6 @@ class PostCreateArticle(PermissionRequiredMixin, CreateView):
         post = form.save(commit=False)
         post.choice_type = 'AR'
         post.author = self.request.user.author
-        data = form.data
-        email(data)
         return super().form_valid(form)
 
 

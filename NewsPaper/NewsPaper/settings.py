@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-uwj9wu69t=vslb(v=&k3t15^2yu^rah!ua+3pklx7!n(4dm_9h
 
 EMAIL_HOST = 'smtp.beget.com'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'django_test12345@sobago.ru'
-EMAIL_HOST_PASSWORD = 'django_test12345'
+EMAIL_HOST_USER = 'django_test123@sobago.ru'
+EMAIL_HOST_PASSWORD = '******'
 EMAIL_USE_SSL = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -43,7 +43,7 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_FORMS = {'signup': 'news.forms.CommonSignupForm'}
-DEFAULT_FROM_EMAIL = 'django_test12345@sobago.ru'
+DEFAULT_FROM_EMAIL = 'django_test123@sobago.ru'
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 # Application definition
@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'news',
+    'news.apps.NewsConfig',
     'django.contrib.sites',
     'django.contrib.flatpages',
     'django_filters',
