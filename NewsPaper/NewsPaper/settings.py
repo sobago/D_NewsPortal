@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-uwj9wu69t=vslb(v=&k3t15^2yu^rah!ua+3pklx7!n(4dm_9h
 EMAIL_HOST = 'smtp.beget.com'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'django_test123@sobago.ru'
-EMAIL_HOST_PASSWORD = '******'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_SSL = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -46,6 +46,9 @@ ACCOUNT_FORMS = {'signup': 'news.forms.CommonSignupForm'}
 DEFAULT_FROM_EMAIL = 'django_test123@sobago.ru'
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -63,6 +66,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django_apscheduler',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +144,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Здравствуй, {{ recipient }}. Новые статьи за неделю!</h2>
+    <hr>
+    {% for cat, posts in data.items %}
+        <h5>Категория {{ cat }}</h5>
+        {% for post in posts %}
+            <a href="http://127.0.0.1:8000{{ post.get_absolute_url }}">{{ post.post_title }}</a><br>
+            {{ post.post_text|truncatechars:50 }}
+            <hr>
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>
