@@ -2,8 +2,9 @@ from django.core.mail import EmailMultiAlternatives
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.template.loader import render_to_string
+from allauth.account.signals import user_signed_up
 
-from .models import Post, Category
+from .models import Post
 
 
 def email_new_post(data):
@@ -33,3 +34,19 @@ def email_new_post(data):
 @receiver(post_save, sender=Post)
 def notify_new_post(sender, instance, **kwargs):
     email_new_post(instance)
+
+
+@receiver(user_signed_up, dispatch_uid="some.unique.string.id.for.allauth.user_signed_up")
+def greet_new_user(request, user, **kwargs):
+    html_content = render_to_string(
+        'new_user_greet_email.html', {
+            "user": user, }
+    )
+    msg = EmailMultiAlternatives(
+        subject=f'Добро пожаловать!',
+        body=f'Приветствуем тебя, {user.username} на нашем портале',
+        from_email='django_test123@sobago.ru',
+        to=[user.email],
+    )
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
