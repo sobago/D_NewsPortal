@@ -1,1 +1,2 @@
-NewsPaper/secret_settings.py
+NewsPaper/.env
+.env
