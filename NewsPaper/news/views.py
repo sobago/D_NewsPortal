@@ -1,13 +1,26 @@
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMultiAlternatives
 from .models import Post, Category, Author
 from .filters import PostFilter
 from .forms import PostForm, UserForm
 from datetime import date
+from .tasks import send_email_new_post
+
+# from django.views import View
+# from .tasks import hello
+# from django.http import HttpResponse
+
+
+# class IndexView(View):
+#     def get(self, request):
+#         hello.delay()
+#         return HttpResponse('Hello!')
 
 
 # Create your views here.
@@ -68,6 +81,18 @@ class PostCreateNews(PermissionRequiredMixin, CreateView):
         post.choice_type = 'NW'
         post.author = self.request.user.author
         return super().form_valid(form)
+
+
+# def email_new_post(data):
+#     recipients = []
+#     category = data.post_to_category_rel
+#     for i in category.subscribers.all():
+#         if i.email == "":
+#             continue
+#         else:
+#             recipients.append([i.email, i.username])
+#     for mail, name in recipients:
+#         send_email_new_post.apply_async([data.pk, mail, name], countdown=5)
 
 
 class PostCreateArticle(PermissionRequiredMixin, CreateView):
