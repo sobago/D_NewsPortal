@@ -12,7 +12,9 @@ class Command(BaseCommand):
         cats = [x.cat_name for x in Category.objects.all()]
         self.stdout.write(f'Имеющиеся категории: {cats}')
         answer = input('Категория: ')
-        Category.objects.get(cat_name=answer)
-        Post.objects.filter(post_to_category_rel__cat_name=answer).delete()
-        self.stdout.write(f'Все посты из категории {answer} удалены.')
-        return
+        try:
+            Category.objects.get(cat_name=answer)
+            Post.objects.filter(post_to_category_rel__cat_name=answer).delete()
+            self.stdout.write(f'Все посты из категории {answer} удалены.')
+        except Category.DoesNotExist:
+            self.stdout.write(self.style.ERROR(f'Не найдена категория {answer}'))
