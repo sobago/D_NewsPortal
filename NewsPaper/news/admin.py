@@ -14,7 +14,7 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ('comment_text', )
 
 
-# Register your models here.
+# Register your models here
 admin.site.register(Author)
 admin.site.register(Category)
 admin.site.register(Post, PostAdmin)
