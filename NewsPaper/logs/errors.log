@@ -1,0 +1,36 @@
+2022-06-12 14:04:17,495 CRITICAL print critical D:\Desktop\SF\PythonProjects\D_NewsPortal\NewsPaper\news\views.py None
+2022-06-12 14:05:33,058 CRITICAL print critical D:\Desktop\SF\PythonProjects\D_NewsPortal\NewsPaper\news\views.py None
+2022-06-12 14:06:42,463 CRITICAL print critical D:\Desktop\SF\PythonProjects\D_NewsPortal\NewsPaper\news\views.py None
+2022-06-12 14:06:44,825 ERROR Internal Server Error: / D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateDoesNotExist'>, TemplateDoesNotExist('news.html1, news/post_list.html'), <traceback object at 0x00000249FBACADC0>)
+Traceback (most recent call last):
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: news.html1, news/post_list.html
+2022-06-12 14:06:44,914 ERROR "GET / HTTP/1.1" 500 145 D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-06-12 14:06:53,413 ERROR Internal Server Error: / D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateDoesNotExist'>, TemplateDoesNotExist('news.html1, news/post_list.html'), <traceback object at 0x00000249FBE31BC0>)
+Traceback (most recent call last):
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: news.html1, news/post_list.html
+2022-06-12 14:06:53,430 ERROR "GET / HTTP/1.1" 500 145 D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-06-12 14:06:59,844 CRITICAL print critical D:\Desktop\SF\PythonProjects\D_NewsPortal\NewsPaper\news\views.py None

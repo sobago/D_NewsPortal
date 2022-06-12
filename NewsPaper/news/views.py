@@ -1,27 +1,23 @@
 from django.shortcuts import render, redirect
-# from django.template.loader import render_to_string
 from django.core.cache import cache
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
-# from django.core.mail import EmailMultiAlternatives
 from .models import Post, Category, Author
 from .filters import PostFilter
 from .forms import PostForm, UserForm
 from datetime import date
-# from .tasks import send_email_new_post
-
-# from django.views import View
-# from .tasks import hello
-# from django.http import HttpResponse
+import logging
 
 
-# class IndexView(View):
-#     def get(self, request):
-#         hello.delay()
-#         return HttpResponse('Hello!')
+logger = logging.getLogger('django')
+logger.debug('print debug')
+logger.info('print info')
+logger.warning('print warning')
+logger.error('print error')
+logger.critical('print critical')
 
 
 # Create your views here.

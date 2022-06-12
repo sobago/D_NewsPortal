@@ -1,0 +1,59 @@
+2022-06-12 14:04:17,484 INFO autoreload Watching for file changes with StatReloader
+2022-06-12 14:04:17,495 INFO views print info
+2022-06-12 14:04:17,495 WARNING views print warning
+2022-06-12 14:04:17,495 ERROR views print error
+2022-06-12 14:04:17,495 CRITICAL views print critical
+2022-06-12 14:04:19,426 ERROR exception Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2022-06-12 14:04:22,079 ERROR exception Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2022-06-12 14:04:26,560 ERROR exception Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2022-06-12 14:04:32,943 ERROR exception Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2022-06-12 14:04:33,702 ERROR exception Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2022-06-12 14:05:33,047 INFO autoreload Watching for file changes with StatReloader
+2022-06-12 14:05:33,058 INFO views print info
+2022-06-12 14:05:33,058 WARNING views print warning
+2022-06-12 14:05:33,058 ERROR views print error
+2022-06-12 14:05:33,058 CRITICAL views print critical
+2022-06-12 14:06:41,683 INFO autoreload D:\Desktop\SF\PythonProjects\D_NewsPortal\NewsPaper\news\views.py changed, reloading.
+2022-06-12 14:06:42,394 INFO autoreload Watching for file changes with StatReloader
+2022-06-12 14:06:42,463 INFO views print info
+2022-06-12 14:06:42,463 WARNING views print warning
+2022-06-12 14:06:42,463 ERROR views print error
+2022-06-12 14:06:42,463 CRITICAL views print critical
+2022-06-12 14:06:44,825 ERROR log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: news.html1, news/post_list.html
+2022-06-12 14:06:44,914 ERROR basehttp "GET / HTTP/1.1" 500 145
+2022-06-12 14:06:53,413 ERROR log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "D:\Desktop\SF\PythonProjects\D_NewsPortal\venv\lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: news.html1, news/post_list.html
+2022-06-12 14:06:53,430 ERROR basehttp "GET / HTTP/1.1" 500 145
+2022-06-12 14:06:59,083 INFO autoreload D:\Desktop\SF\PythonProjects\D_NewsPortal\NewsPaper\news\views.py changed, reloading.
+2022-06-12 14:06:59,781 INFO autoreload Watching for file changes with StatReloader
+2022-06-12 14:06:59,843 INFO views print info
+2022-06-12 14:06:59,843 WARNING views print warning
+2022-06-12 14:06:59,844 ERROR views print error
+2022-06-12 14:06:59,844 CRITICAL views print critical
