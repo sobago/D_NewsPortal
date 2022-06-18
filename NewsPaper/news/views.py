@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.cache import cache
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -10,14 +11,9 @@ from .filters import PostFilter
 from .forms import PostForm, UserForm
 from datetime import date
 import logging
-
+import pytz
 
 logger = logging.getLogger('django')
-logger.debug('print debug')
-logger.info('print info')
-logger.warning('print warning')
-logger.error('print error')
-logger.critical('print critical')
 
 
 # Create your views here.
@@ -31,6 +27,12 @@ class PostsList(ListView):
     template_name = 'news.html'
     context_object_name = 'posts'
     paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
+        return context
 
 
 class PostDetail(DetailView):
@@ -139,6 +141,8 @@ class ProfileDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
         return context
 
 
@@ -147,6 +151,18 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'profile_edit.html'
     success_url = reverse_lazy('post_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
+        return context
+
+
+def set_timezone(request):
+    if request.method == 'POST':
+        request.session['django_timezone'] = request.POST['timezone']
+    return redirect('/user/' + str(request.user.pk))
 
 
 @login_required

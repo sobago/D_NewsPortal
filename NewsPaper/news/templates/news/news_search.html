@@ -1,35 +1,36 @@
 {% extends 'default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 {% load custom_tags %}
 
 {% block title %}
-    Новости
+    {% trans "Новости" %}
 {% endblock title %}
 
 {% block content %}
-    <h1>Поиск новостей</h1>
+    <h1>{% trans "Поиск новостей" %}</h1>
     <hr>
    <form action="" method="get">
        {{ filterset.form.as_p }}
-       <input type="submit" value="Найти" />
+       <input type="submit" value="{% trans 'Найти' %}" />
    </form>
    <hr>
-    <p>Всего элементов: {{ search_post|length }}</p>
+    <p>{% trans "Всего элементов" %}: {{ search_post|length }}</p>
    <hr>
     {% if search_post %}
         {% for post in search_post %}
         <table>
             <tr align="left">
-                <td><b>Заголовок:</b></td>
+                <td><b>{% trans "Заголовок" %}:</b></td>
                 <td><a href="/{{ post.pk }}">{{ post.post_title }}</td>
             </tr>
             <tr align="left">
-                <td><b>Дата:</b></td>
+                <td><b>{% trans "Дата" %}:</b></td>
                 <td>{{ post.create_date_time|date:'d E Y' }}</td>
             </tr>
             <tr align="left">
-                <td><b>Текст статьи:</b></td>
+                <td><b>{% trans "Текст статьи" %}:</b></td>
                 <td>{{ post.post_text|censor|truncatewords:20 }}</td>
             </tr>
         </table>
@@ -37,7 +38,7 @@
         <br>
         {% endfor %}
     {% else %}
-        <h2>Новостей нет!</h2>
+        <h2>{% trans "Новостей нет!" %}</h2>
     {% endif %}
 
     {% if page_obj.has_previous %}

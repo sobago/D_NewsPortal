@@ -1,24 +1,25 @@
 {% extends 'default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
-    Новость
+    {% trans "Новость" %}
 {% endblock title %}
 
 {% block content %}
-<h1 xmlns="http://www.w3.org/1999/html">Новость №{{ post_detail.pk }}</h1>
+<h1 xmlns="http://www.w3.org/1999/html">{% trans "Новость №" %}{{ post_detail.pk }}</h1>
     <hr>
     <table>
         <tr align="left">
             <td><h5>{{ post_detail.post_title }}</h5></td>
         </tr>
         <tr align="left">
-            <td>Дата создания: {{ post_detail.create_date_time|date:'d E Y' }}<br>
-                Категория: <a href="/categorys/">{{ post_detail.post_to_category_rel }}</a><br>
-                Рейтинг: {{ post_detail.post_rating }}<br>
-                Автор: {{ post_detail.author }}<br>
-                Тип: {{ post_detail.choice_type }}<br>
+            <td>{% trans "Дата создания" %}: {{ post_detail.create_date_time|date:'d E Y' }}<br>
+                {% trans "Категория" %}: <a href="/categorys/">{{ post_detail.post_to_category_rel }}</a><br>
+                {% trans "Рейтинг" %}: {{ post_detail.post_rating }}<br>
+                {% trans "Автор" %}: {{ post_detail.author }}<br>
+                {% trans "Тип" %}: {{ post_detail.choice_type }}<br>
             </td>
         </tr>
         <tr align="left">
@@ -26,8 +27,8 @@
         </tr>
     </table>
     <hr>
-    <h6><a href="{{ post_detail.get_absolute_url }}/edit">Редактировать</a> |
-    <a href="{{ post_detail.get_absolute_url }}/delete">Удалить</a> </h6>
+    <h6><a href="{{ post_detail.get_absolute_url }}/edit">{% trans "Редактировать" %}</a> |
+    <a href="{{ post_detail.get_absolute_url }}/delete">{% trans "Удалить" %}</a> </h6>
 
 
 {% endblock content %}

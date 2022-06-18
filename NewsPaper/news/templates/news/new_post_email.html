@@ -1,16 +1,17 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <h2>Здравствуй, {{ recipient }}. Новая статья в твоём любимом разделе!</h2>
+    <h2>{% trans "Здравствуй," %} {{ recipient }}. {% trans "Новая статья в твоём любимом разделе!" %}</h2>
     <h2>{{ data.post_title }}</h2>
     <hr>
     <p> {{ data.post_text|truncatechars:50 }} </p>
-    <a href="http://127.0.0.1:8000{{ data.get_absolute_url }}">Читать полностью</a>
+    <a href="http://127.0.0.1:8000{{ data.get_absolute_url }}">{% trans "Читать полностью" %}</a>
     <hr>
 </body>
 </html>

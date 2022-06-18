@@ -1,12 +1,13 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from .views import index, PostsList, PostDetail, PostSearch, PostCreateNews, PostCreateArticle, PostUpdate, PostDelete, \
-    ProfileUpdate, ProfileDetail, get_author, get_subscribe, del_subscribe, CategoryList
+    ProfileUpdate, ProfileDetail, get_author, get_subscribe, del_subscribe, CategoryList, set_timezone
 from django.views.decorators.cache import cache_page
 
 urlpatterns = [
+    # path('i18n/', include('django.conf.urls.i18n')),
     path('index', index),
-    path('', cache_page(60)(PostsList.as_view()), name='post_list'),
+    path('', PostsList.as_view(), name='post_list'),
     path('<int:pk>', PostDetail.as_view(), name='post_detail'),
     path('search', PostSearch.as_view(), name='post_search'),
     path('news/create/', PostCreateNews.as_view(), name='news_create'),
@@ -19,4 +20,5 @@ urlpatterns = [
     path('subscribe/<int:pk>/', get_subscribe, name='subscribe'),
     path('unsubscribe/<int:pk>/', del_subscribe, name='unsubscribe'),
     path('categorys/', CategoryList.as_view(), name='category_list'),
+    path('user/', set_timezone, name='set_timezone'),
 ]

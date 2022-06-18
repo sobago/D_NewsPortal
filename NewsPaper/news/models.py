@@ -34,7 +34,7 @@ class Category(models.Model):
     subscribers = models.ManyToManyField(User)
 
     def __str__(self):
-        return self.cat_name
+        return f'{self.id} {self.cat_name}'
 
     class Meta:
         verbose_name = 'Категория'

@@ -1,25 +1,26 @@
 {% extends 'default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 {% load custom_tags %}
 
 {% block title %}
-    Редактирование поста
+    {% trans "Редактирование поста" %}
 {% endblock title %}
 
 {% block content %}
-    <h1>Пост</h1>
+    <h1>{% trans "Пост" %}</h1>
     <hr>
     {% if today_news_count %}
-    <h5>Можно добавлять не больше 3 новостей в сутки, приходите завтра!</h5>
+    <h5>{% trans "Можно добавлять не больше 3 новостей в сутки, приходите завтра!" %}</h5>
     {% else%}
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Сохранить">
+        <input type="submit" value="{% trans 'Сохранить' %}">
     </form>
     {% endif %}
 {% if is_not_premium %}
-<button> <a href="/upgrade/"> Хочу стать автором!</a> </button>
+<button> <a href="/upgrade/">{% trans "Хочу стать автором!" %}</a> </button>
 {% endif %}
 {% endblock content %}

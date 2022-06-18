@@ -33,7 +33,7 @@ def email_new_post(data):
         # msg.send()
 
 
-@receiver(post_save, sender=Post)
+# @receiver(post_save, sender=Post)
 def notify_new_post(sender, instance, **kwargs):
     email_new_post(instance)
 

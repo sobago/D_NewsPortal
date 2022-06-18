@@ -1,28 +1,29 @@
 {% extends 'default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 {% load custom_tags %}
 
 {% block title %}
-    Новости
+    {% trans "Новости" %}
 {% endblock title %}
 
 {% block content %}
-    <h1>Список новостей ({{ page_obj.paginator.count }})</h1>
+    <h1>{% trans "Список новостей" %} ({{ page_obj.paginator.count }})</h1>
     <hr>
     {% if posts %}
         {% for post in posts %}
         <table>
             <tr align="left">
-                <td><b>Заголовок:</b></td>
+                <td><b>{% trans "Заголовок" %}:</b></td>
                 <td><a href="/{{ post.pk }}">{{ post.post_title }}</td>
             </tr>
             <tr align="left">
-                <td><b>Дата:</b></td>
+                <td><b>{% trans "Дата" %}:</b></td>
                 <td>{{ post.create_date_time|date:'d E Y' }}</td>
             </tr>
             <tr align="left">
-                <td><b>Текст статьи:</b></td>
+                <td><b>{% trans "Текст статьи" %}:</b></td>
                 <td>{{ post.post_text|censor|truncatewords:20 }}</td>
             </tr>
         </table>
@@ -30,7 +31,7 @@
         <br>
         {% endfor %}
     {% else %}
-        <h2>Новостей нет!</h2>
+        <h2>{% trans "Новостей нет!" %}"</h2>
     {% endif %}
 
     {% if page_obj.has_previous %}

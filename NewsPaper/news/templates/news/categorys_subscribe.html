@@ -1,14 +1,15 @@
 {% extends 'default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 {% load custom_tags %}
 
 {% block title %}
-    Категории новостей
+    {% trans "Категории новостей" %}
 {% endblock title %}
 
 {% block content %}
-    <h1>Подписка на рассылки {{ request.user }}</h1>
+    <h1>{% trans "Подписка на рассылки" %} {{ request.user }}</h1>
     <hr>
     {% if categorys %}
         {% for category in categorys %}
@@ -17,12 +18,12 @@
                 <td>{{ category.cat_name }} (id: {{ category.pk }})</td>
                 {% if user not in category.subscribers.all %}
                 <td>
-                    <button><a href="/subscribe/{{ category.pk }}/">Подписаться</a></button>
+                    <button><a href="/subscribe/{{ category.pk }}/">{% trans "Подписаться" %}</a></button>
                 </td>
                 {% endif %}
                 {% if user in category.subscribers.all %}
                 <td>
-                    <button><a href="/unsubscribe/{{ category.pk }}/">Отписаться</a></button>
+                    <button><a href="/unsubscribe/{{ category.pk }}/">{% trans "Отписаться" %}</a></button>
                 </td>
                 {% endif %}
             </tr>
@@ -30,7 +31,7 @@
         <br>
         {% endfor %}
     {% else %}
-        <h2>Категорий нет!</h2>
+        <h2>{% trans "Категорий нет!" %}</h2>
     {% endif %}
 
     {% if page_obj.has_previous %}

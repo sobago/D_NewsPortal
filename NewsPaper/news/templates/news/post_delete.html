@@ -1,21 +1,22 @@
 {% extends 'default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 {% load custom_tags %}
 
 {% block title %}
-    Удаление поста
+    {% trans "Удаление поста" %}
 {% endblock title %}
 
 {% block content %}
-    <h1>Удаление поста</h1>
+    <h1>{% trans "Удаление поста" %}</h1>
     <hr>
     <form action="" method="post">
         {% csrf_token %}
-        <h2>Вы точно хотите удалить пост?</h2>
+        <h2>{% trans "Вы точно хотите удалить пост?" %}</h2>
         {{ object.post_title }}
         <br>
-        <input type="submit" value="Удалить">
+        <input type="submit" value="{% trans 'Удалить' %}">
     </form>
 
 {% endblock content %}

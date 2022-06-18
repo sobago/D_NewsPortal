@@ -1,32 +1,47 @@
 {% extends 'default.html' %}
 
+{% load i18n %}
+{% load tz %}
 {% load custom_filters %}
 
 {% block title %}
-    Профайл
+    {% trans "Профайл" %}
 {% endblock title %}
 
 {% block content %}
-<h1>Профайл пользователя {{ profile_detail.username }} (#{{ profile_detail.pk }})</h1>
+<h1>{% trans "Профайл пользователя" %} {{ profile_detail.username }} (#{{ profile_detail.pk }})</h1>
     <hr>
     <table>
         <tr align="left">
             <td><h5>{{ profile_detail.post_title }}</h5></td>
         </tr>
         <tr align="left">
-            <td>Имя: {{ profile_detail.first_name }}<br>
-                Фамилия: {{ profile_detail.last_name }}<br>
-                E-mail: {{ profile_detail.email }}<br>
-                Имя пользователя: {{ profile_detail.username }}<br>
+            <td>{% trans "Имя" %}: {{ profile_detail.first_name }}<br>
+                {% trans "Фамилия" %}: {{ profile_detail.last_name }}<br>
+                {% trans "E-mail" %}: {{ profile_detail.email }}<br>
+                {% trans "Имя пользователя" %}: {{ profile_detail.username }}<br>
+                {% get_current_timezone as TIME_ZONE %}
+                {% trans "Текущий часовой пояс" %}: {{ TIME_ZONE }}<br>
+                {% trans "Текущие дата и время" %}: {{ current_time|timezone:TIME_ZONE }}<br>
+                <form action="{% url 'set_timezone' %}" method="POST">
+                    {% csrf_token %}
+                    <label for="timezone">Time zone:</label>
+                    <select name="timezone">
+                        {% for tz in timezones %}
+                        <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected{% endif %}>{{ tz }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Set">
+                </form>
             </td>
         </tr>
         {% if is_not_author %}
         <tr>
-        <td><button> <a href="/upgrade/">Хочу стать автором!</a></button></td>
+        <td><button> <a href="/upgrade/">{% trans "Хочу стать автором!" %}</a></button></td>
         </tr>
         {% endif %}
     </table>
     <hr>
-    <h6><a href="/user/{{ profile_detail.pk }}/edit">Изменить</a>
+    <h6><a href="/user/{{ profile_detail.pk }}/edit">{% trans "Изменить" %}</a>
 
 {% endblock content %}

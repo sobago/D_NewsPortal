@@ -1,0 +1,242 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-17 14:39+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\news\templates\news\categorys_subscribe.html:8
+msgid "Категории новостей"
+msgstr "Categories"
+
+#: .\news\templates\news\categorys_subscribe.html:12
+msgid "Подписка на рассылки"
+msgstr "Newsletter subscription"
+
+#: .\news\templates\news\categorys_subscribe.html:21
+msgid "Подписаться"
+msgstr "Subscribe"
+
+#: .\news\templates\news\categorys_subscribe.html:26
+msgid "Отписаться"
+msgstr "Unsubscribe"
+
+#: .\news\templates\news\categorys_subscribe.html:34
+msgid "Категорий нет!"
+msgstr "No categories!"
+
+#: .\news\templates\news\default.html:25 .\news\templates\news\news.html:8
+#: .\news\templates\news\news_search.html:8
+msgid "Новости"
+msgstr "News"
+
+#: .\news\templates\news\default.html:35
+msgid "Поиск"
+msgstr "Search"
+
+#: .\news\templates\news\default.html:39
+msgid "Новая статья"
+msgstr "New article"
+
+#: .\news\templates\news\default.html:43
+msgid "Новая новость"
+msgstr "New post"
+
+#: .\news\templates\news\default.html:48
+#: .\news\templates\news\profile_detail.html:8
+msgid "Профайл"
+msgstr "Profile"
+
+#: .\news\templates\news\default.html:52
+msgid "Выйти"
+msgstr "Logout"
+
+#: .\news\templates\news\default.html:58
+msgid "Войти"
+msgstr "Login"
+
+#: .\news\templates\news\new_post_email.html:10
+#: .\news\templates\news\new_posts_weekly_email.html:10
+#: .\news\templates\news\new_user_greet_email.html:10
+msgid "Здравствуй,"
+msgstr "Hi"
+
+#: .\news\templates\news\new_post_email.html:10
+msgid "Новая статья в твоём любимом разделе!"
+msgstr "New article in your favorites!"
+
+#: .\news\templates\news\new_post_email.html:14
+msgid "Читать полностью"
+msgstr "Read more"
+
+#: .\news\templates\news\new_posts_weekly_email.html:10
+msgid "Новые статьи за неделю!"
+msgstr ""
+
+#: .\news\templates\news\new_posts_weekly_email.html:13
+#: .\news\templates\news\news_detail.html:19
+msgid "Категория"
+msgstr "Category"
+
+#: .\news\templates\news\new_user_greet_email.html:11
+msgid ""
+"Приветствуем тебя на нашем новостном портале, здесь ты найдешь много "
+"интересного."
+msgstr ""
+"Welcome to our news portal, here you will find a lot of interesting things."
+
+#: .\news\templates\news\new_user_greet_email.html:13
+msgid "Читать новости"
+msgstr "Read news"
+
+#: .\news\templates\news\news.html:12
+msgid "Список новостей"
+msgstr "Posts list"
+
+#: .\news\templates\news\news.html:18
+#: .\news\templates\news\news_search.html:25
+msgid "Заголовок"
+msgstr "Header"
+
+#: .\news\templates\news\news.html:22
+#: .\news\templates\news\news_search.html:29
+msgid "Дата"
+msgstr "Date"
+
+#: .\news\templates\news\news.html:26
+#: .\news\templates\news\news_search.html:33
+msgid "Текст статьи"
+msgstr "Article text"
+
+#: .\news\templates\news\news.html:34
+#: .\news\templates\news\news_search.html:41
+msgid "Новостей нет!"
+msgstr "No news!"
+
+#: .\news\templates\news\news_detail.html:7
+msgid "Новость"
+msgstr "News"
+
+#: .\news\templates\news\news_detail.html:11
+msgid "Новость №"
+msgstr "News #"
+
+#: .\news\templates\news\news_detail.html:18
+msgid "Дата создания"
+msgstr "Create date"
+
+#: .\news\templates\news\news_detail.html:20
+msgid "Рейтинг"
+msgstr "Rating"
+
+#: .\news\templates\news\news_detail.html:21
+msgid "Автор"
+msgstr "Author"
+
+#: .\news\templates\news\news_detail.html:22
+msgid "Тип"
+msgstr "Type"
+
+#: .\news\templates\news\news_detail.html:30
+msgid "Редактировать"
+msgstr "Edit"
+
+#: .\news\templates\news\news_detail.html:31
+#: .\news\templates\news\post_delete.html:19
+msgid "Удалить"
+msgstr "Delete"
+
+#: .\news\templates\news\news_search.html:12
+msgid "Поиск новостей"
+msgstr "Search news"
+
+#: .\news\templates\news\news_search.html:16
+msgid "Найти"
+msgstr "Search"
+
+#: .\news\templates\news\news_search.html:19
+msgid "Всего элементов"
+msgstr "Total items"
+
+#: .\news\templates\news\post_delete.html:8
+#: .\news\templates\news\post_delete.html:12
+msgid "Удаление поста"
+msgstr "Delete"
+
+#: .\news\templates\news\post_delete.html:16
+msgid "Вы точно хотите удалить пост?"
+msgstr "Are you sure you want to delete the post?"
+
+#: .\news\templates\news\post_edit.html:8
+msgid "Редактирование поста"
+msgstr "Edit post"
+
+#: .\news\templates\news\post_edit.html:12
+msgid "Пост"
+msgstr "Post"
+
+#: .\news\templates\news\post_edit.html:15
+msgid "Можно добавлять не больше 3 новостей в сутки, приходите завтра!"
+msgstr "You can add no more than 3 news per day, come tomorrow!"
+
+#: .\news\templates\news\post_edit.html:20
+#: .\news\templates\news\profile_edit.html:17
+msgid "Сохранить"
+msgstr "Save"
+
+#: .\news\templates\news\post_edit.html:24
+#: .\news\templates\news\profile_detail.html:30
+msgid "Хочу стать автором!"
+msgstr "I want to be an author!"
+
+#: .\news\templates\news\profile_detail.html:12
+msgid "Профайл пользователя"
+msgstr "User profile"
+
+#: .\news\templates\news\profile_detail.html:19
+msgid "Имя"
+msgstr "Name"
+
+#: .\news\templates\news\profile_detail.html:20
+msgid "Фамилия"
+msgstr "Surname"
+
+#: .\news\templates\news\profile_detail.html:21
+msgid "E-mail"
+msgstr "E-mail"
+
+#: .\news\templates\news\profile_detail.html:22
+msgid "Имя пользователя"
+msgstr "Username"
+
+#: .\news\templates\news\profile_detail.html:24
+msgid "Текущий часовой пояс"
+msgstr "Current time zone"
+
+#: .\news\templates\news\profile_detail.html:25
+msgid "Текущие дата и время"
+msgstr "Current date and time"
+
+#: .\news\templates\news\profile_detail.html:35
+msgid "Изменить"
+msgstr "Edit"
+
+#: .\news\templates\news\profile_edit.html:8
+msgid "Редактирование профиля пользователя"
+msgstr "Editing a user profile"
+
+#: .\news\templates\news\profile_edit.html:12
+msgid "Пользователь"
+msgstr "User"

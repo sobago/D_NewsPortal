@@ -1,19 +1,23 @@
 {% extends 'default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
+{% load tz %}
 {% load custom_tags %}
 
 {% block title %}
-    Редактирование профиля пользователя
+    {% trans "Редактирование профиля пользователя" %}
 {% endblock title %}
 
 {% block content %}
-    <h1>Пользователь</h1>
+    <h1>{% trans "Пользователь" %}</h1>
     <hr>
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Сохранить">
+        <input type="submit" value="{% trans 'Сохранить' %}">
     </form>
+    {% get_current_timezone as TIME_ZONE %}
+
 
 {% endblock content %}
