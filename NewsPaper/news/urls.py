@@ -1,8 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import index, PostsList, PostDetail, PostSearch, PostCreateNews, PostCreateArticle, PostUpdate, PostDelete, \
-    ProfileUpdate, ProfileDetail, get_author, get_subscribe, del_subscribe, CategoryList, set_timezone
+from .views import *
+from rest_framework import routers
 from django.views.decorators.cache import cache_page
+
+
+router = routers.DefaultRouter()
+router.register(r'news', NewsViewset, basename='news')
+router.register(r'articles', ArticlesViewset, basename='//articles')
+
 
 urlpatterns = [
     # path('i18n/', include('django.conf.urls.i18n')),
@@ -21,4 +27,6 @@ urlpatterns = [
     path('unsubscribe/<int:pk>/', del_subscribe, name='unsubscribe'),
     path('categorys/', CategoryList.as_view(), name='category_list'),
     path('user/', set_timezone, name='set_timezone'),
+    path('api/v1/', include(router.urls), name='api'),
+
 ]

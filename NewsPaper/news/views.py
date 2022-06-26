@@ -6,6 +6,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets, permissions
+from .serializers import *
 from .models import Post, Category, Author
 from .filters import PostFilter
 from .forms import PostForm, UserForm
@@ -197,3 +199,15 @@ def del_subscribe(request, pk):
     category = Category.objects.get(pk=pk)
     category.subscribers.remove(user)
     return redirect('/categorys/')
+
+
+class NewsViewset(viewsets.ModelViewSet):
+    queryset = Post.objects.all().filter(choice_type='NW')
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class ArticlesViewset(viewsets.ModelViewSet):
+    queryset = Post.objects.all().filter(choice_type='AR')
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
