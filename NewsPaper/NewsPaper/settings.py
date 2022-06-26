@@ -90,6 +90,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'django_apscheduler',
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -199,6 +200,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
 
 
 # LOGGING = {
